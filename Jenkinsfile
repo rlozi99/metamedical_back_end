@@ -18,6 +18,8 @@ pipeline {
         stage('Build JAR') {
             steps {
                 script {
+                    // Gradle이 설치된 경로로 변경
+                    env.PATH = "/usr/bin/gradle:${env.PATH}"
                     // Run Gradle build to create JAR file
                     sh "./gradlew build"
                 }
