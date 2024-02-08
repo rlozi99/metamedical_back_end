@@ -22,7 +22,7 @@ pipeline {
                     sh "gradle build"
                 }
             }
-}   
+        }   
 
 
         stage('Build and Push Docker Image') {
