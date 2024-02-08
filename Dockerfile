@@ -1,5 +1,5 @@
 FROM openjdk:21
-WORKDIR /usr/src/app
-COPY . /app
-RUN command_to_install_dependencies
-CMD ["java", "-jar", "run", "/app.jar"]
+VOLUME /tmp
+ARG JAR_FILE_PATH=target/*.jar
+COPY ${JAR_FILE_PATH} app.jar
+ENTRYPOINT ["java","-jar","/app.jar"]
