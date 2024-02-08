@@ -15,6 +15,15 @@ pipeline {
             }
         }
 
+        stage('Build JAR') {
+            steps {
+                script {
+                    // Run Gradle build to create JAR file
+                    sh "./gradlew build"
+                }
+            }
+        }
+
         stage('Build and Push Docker Image') {
             steps {
                 script {
