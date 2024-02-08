@@ -6,4 +6,4 @@ services:
     environment:
       ALLOW_EMPTY_PASSWORD: "yes"
     ports:
-        - "8080:80"
+        - "8081:80"
