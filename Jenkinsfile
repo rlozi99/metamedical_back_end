@@ -19,7 +19,7 @@ pipeline {
             steps {
                 script {
                     // Run Gradle build to create JAR file
-                    sh "gradle build"
+                    sh "./gradlew build"
                 }
             }
         }   
