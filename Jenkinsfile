@@ -4,7 +4,7 @@ pipeline {
     environment {
         DOCKER_HUB_CREDENTIAL = credentials('ex') // Jenkins Credential ID for Docker Hub
         DOCKER_REGISTRY = 'docker.io'
-        IMAGE_NAME = 'kwujio'
+        IMAGE_NAME = 'kwujio/myhttpd'
         DOCKER_REGISTRY_USERNAME = 'kwujio'
     }
 
