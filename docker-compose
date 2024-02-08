@@ -1,0 +1,9 @@
+version: '3'
+services:
+  back:
+    image: openjdk:21
+    container_name: back
+    environment:
+      ALLOW_EMPTY_PASSWORD: "yes"
+    ports:
+        - "8080:80"
