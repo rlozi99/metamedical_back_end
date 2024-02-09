@@ -12,28 +12,28 @@ pipeline {
         ACR_CREDENTIAL_ID = 'ACR'
     }
 
-        stage('Checkout') {
-            steps {
-                checkout scm
-            }
+    stage('Checkout') {
+        steps {
+            checkout scm
         }
+    }
 
     stage('Build and Push Docker Image to ACR') {
-            steps {
-                script {
-                    withCredentials([usernamePassword(credentialsId: 'acr-credential-id', passwordVariable: 'ACR_PASSWORD', usernameVariable: 'ACR_USERNAME')]) {
-                        // Log in to ACR
-                        sh "az acr login --name $CONTAINER_REGISTRY --username $ACR_USERNAME --password $ACR_PASSWORD"
+        steps {
+            script {
+                withCredentials([usernamePassword(credentialsId: 'acr-credential-id', passwordVariable: 'ACR_PASSWORD', usernameVariable: 'ACR_USERNAME')]) {
+                    // Log in to ACR
+                    sh "az acr login --name $CONTAINER_REGISTRY --username $ACR_USERNAME --password $ACR_PASSWORD"
 
-                        // Build and push Docker image to ACR
-                        sh "docker build -t $REPO:$TAG ."
-                        sh "docker tag $REPO:$TAG $CONTAINER_REGISTRY/$IMAGE_NAME"
-                        sh "docker push $CONTAINER_REGISTRY/$IMAGE_NAME"
+                    // Build and push Docker image to ACR
+                    sh "docker build -t $REPO:$TAG ."
+                    sh "docker tag $REPO:$TAG $CONTAINER_REGISTRY/$IMAGE_NAME"
+                    sh "docker push $CONTAINER_REGISTRY/$IMAGE_NAME"
 
-                        // Log out from ACR (optional)
-                        sh "az acr logout --name $CONTAINER_REGISTRY"
-                    }
+                    // Log out from ACR (optional)
+                    sh "az acr logout --name $CONTAINER_REGISTRY"
                 }
             }
+        }
     }
 }
