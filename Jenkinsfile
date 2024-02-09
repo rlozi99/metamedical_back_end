@@ -29,9 +29,6 @@ pipeline {
                         sh "docker build -t $REPO:$TAG ."
                         sh "docker tag $REPO:$TAG $CONTAINER_REGISTRY/$IMAGE_NAME"
                         sh "docker push $CONTAINER_REGISTRY/$IMAGE_NAME"
-
-                        // Log out from ACR (optional)
-                        sh "az acr logout --name $CONTAINER_REGISTRY"
                     }
                 }
             }
