@@ -2,15 +2,14 @@ pipeline {
     agent any
 
     environment {
-        AZURE_SUBSCRIPTION_ID='c8ce3edc-0522-48a3-b7e4-afe8e3d731d9'
-        AZURE_TENANT_ID='3d0bec40-7719-479d-828a-f7adf7deea16'
-        CONTAINER_REGISTRY='metanetcr.azurecr.io'
-        RESOURCE_GROUP='metanet'
-        REPO="kwujio/myhttpd"
-        IMAGE_NAME="kwujio/myhttpd:latest"
-        TAG="latest"
+        AZURE_SUBSCRIPTION_ID = 'c8ce3edc-0522-48a3-b7e4-afe8e3d731d9'
+        AZURE_TENANT_ID = '3d0bec40-7719-479d-828a-f7adf7deea16'
+        CONTAINER_REGISTRY = 'metanetcr.azurecr.io'
+        RESOURCE_GROUP = 'metanet'
+        REPO = 'kwujio/myhttpd'
+        IMAGE_NAME = 'kwujio/myhttpd:latest'
+        TAG = 'latest'
         ACR_CREDENTIAL_ID = 'ACR'
-			
     }
 
         stage('Checkout') {
@@ -36,5 +35,5 @@ pipeline {
                     }
                 }
             }
-        }
     }
+}
