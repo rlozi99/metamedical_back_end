@@ -2,34 +2,36 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_HUB_CREDENTIAL = credentials('ex') // Jenkins Credential ID for Docker Hub
-        DOCKER_REGISTRY = 'docker.io'
-        IMAGE_NAME = 'kwujio/myhttpd'
-        DOCKER_REGISTRY_USERNAME = 'kwujio'
+        AZURE_SUBSCRIPTION_ID='c8ce3edc-0522-48a3-b7e4-afe8e3d731d9'
+        AZURE_TENANT_ID='3d0bec40-7719-479d-828a-f7adf7deea16'
+        CONTAINER_REGISTRY='metanetcr.azurecr.io'
+        RESOURCE_GROUP='metanet'
+        REPO="kwujio/myhttpd"
+        IMAGE_NAME="kwujio/myhttpd:latest"
+        TAG="latest"
+			
     }
 
-    stages {
         stage('Checkout') {
             steps {
                 checkout scm
             }
         }
 
-
-
-        stage('Build and Push Docker Image') {
+    stage('Build and Push Docker Image to ACR') {
             steps {
                 script {
-                    withCredentials([string(credentialsId: 'ex', variable: 'DOCKER_HUB_CREDENTIAL')]) {
-                        // Log in to Docker Hub
-                        sh "echo $DOCKER_HUB_CREDENTIAL | docker login -u $DOCKER_REGISTRY_USERNAME --password-stdin $DOCKER_REGISTRY"
+                    withCredentials([usernamePassword(credentialsId: 'acr-credential-id', passwordVariable: 'ACR_PASSWORD', usernameVariable: 'ACR_USERNAME')]) {
+                        // Log in to ACR
+                        sh "az acr login --name $CONTAINER_REGISTRY --username $ACR_USERNAME --password $ACR_PASSWORD"
 
-                        // Build and push Docker image
-                        sh "docker build -t $DOCKER_REGISTRY/$IMAGE_NAME ."
-                        sh "docker push $DOCKER_REGISTRY/$IMAGE_NAME"
+                        // Build and push Docker image to ACR
+                        sh "docker build -t $REPO:$TAG ."
+                        sh "docker tag $REPO:$TAG $CONTAINER_REGISTRY/$IMAGE_NAME"
+                        sh "docker push $CONTAINER_REGISTRY/$IMAGE_NAME"
 
-                        // Log out from Docker Hub (optional)
-                        sh "docker logout $DOCKER_REGISTRY"
+                        // Log out from ACR (optional)
+                        sh "az acr logout --name $CONTAINER_REGISTRY"
                     }
                 }
             }
