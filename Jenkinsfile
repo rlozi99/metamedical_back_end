@@ -9,7 +9,6 @@ pipeline {
         REPO = 'kwujio/myhttpd'
         IMAGE_NAME = 'kwujio/myhttpd:latest'
         TAG = 'latest'
-        ACR_CREDENTIAL_ID = 'acr'
     }
 
     stages {
