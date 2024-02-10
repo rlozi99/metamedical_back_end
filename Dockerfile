@@ -1,5 +1,3 @@
-FROM openjdk:21
-WORKDIR /usr/src/app
-COPY . /app
-RUN command_to_install_dependencies
-CMD ["java", "-jar", "run", "/app.jar"]
+FROM openjdk:11
+COPY "gradle/wrapper"/*.jar /app.jar
+ENTRYPOINT ["java","-jar","/app.jar"]
