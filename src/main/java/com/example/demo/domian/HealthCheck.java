@@ -4,19 +4,14 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(
-        name = "register"
+        name = "healthcheck"
 )
-public class Register {
+public class HealthCheck {
     @Id
     @GeneratedValue(
             strategy = GenerationType.IDENTITY
     )
     private int user_no;
-    @Column(
-            name = "id",
-            nullable = false
-    )
-    private String id;
 
     @Column(
             name = "name",
@@ -37,9 +32,6 @@ public class Register {
     )
     private String address;
 
-    public String getId() {
-        return this.id;
-    }
 
     public String getName() {
         return this.name;
@@ -53,11 +45,6 @@ public class Register {
         return this.address;
     }
 
-
-
-    public void setId(String id) {
-        this.id = id;
-    }
 
     public void setName(String name) {
         this.name = name;

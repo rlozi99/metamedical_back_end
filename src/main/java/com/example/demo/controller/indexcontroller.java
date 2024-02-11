@@ -1,9 +1,12 @@
 package com.example.demo.controller;
 
 
+import com.example.demo.domian.HealthCheck;
+import com.example.demo.domian.Vaccine;
 import com.example.demo.domian.User;
 import com.example.demo.service.JoinService;
 import com.example.demo.service.LoginService;
+import com.example.demo.service.RegisterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,6 +24,9 @@ public class indexcontroller {
     @Autowired
     private JoinService joinService;
 
+    @Autowired
+    private RegisterService registerService;
+
     @PostMapping("/login")
     public ResponseEntity<String> authenticateUser(@RequestBody User user) {
         boolean isAuthenticated = loginService.login(user);
@@ -32,11 +38,11 @@ public class indexcontroller {
         }
     }
 
-        @PostMapping("/register")
-        @CrossOrigin(origins = "http://localhost:8081")
-        public User addUser (@RequestBody User user){
-            System.out.println("InsertDB");
-            return joinService.addUser(user);
-        }
+    @PostMapping("/join")
+    public User addUser (@RequestBody User user){
+        return joinService.addUser(user);
     }
+
+
+}
 
