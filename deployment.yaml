@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: springboot-k8s-deployment
+  name: back
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: springboot-k8s-deployment
+      app: back
   template:
     metadata:
       labels:
-        app: springboot-k8s-deployment
+        app: back
     spec:
       containers:
-      - name: springboot-k8s-example
+      - name: back-container
         image: goodacr.azurecr.io/kwujio/myhttpd:latest
         ports:
         - containerPort: 8080
