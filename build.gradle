@@ -38,8 +38,6 @@ jar {
 	enabled = false
 }
 
-
-
 tasks.named('bootBuildImage') {
 	builder = 'paketobuildpacks/builder-jammy-base:latest'
 }
