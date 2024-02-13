@@ -3,9 +3,9 @@ pipeline {
 
     environment {
         AZURE_SUBSCRIPTION_ID = 'c8ce3edc-0522-48a3-b7e4-afe8e3d731d9'
-        AZURE_TENANT_ID = '3d0bec40-7719-479d-828a-f7adf7deea16'
-        CONTAINER_REGISTRY = 'metanetcr.azurecr.io'
-        RESOURCE_GROUP = 'metanet'
+        AZURE_TENANT_ID = 'bac4b78b-fcc2-4614-a32b-b69330b1af9f'
+        CONTAINER_REGISTRY = 'goodacr.azurecr.io'
+        RESOURCE_GROUP = 'AKS'
         REPO = 'kwujio/myhttpd'
         IMAGE_NAME = 'kwujio/myhttpd:latest'
         TAG = 'latest'
