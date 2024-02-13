@@ -30,6 +30,7 @@ pipeline {
             steps {
                 script {
                     // Gradle 또는 Maven을 사용하여 JAR 파일 빌드
+                    sh './gradlew --version'
                     sh './gradlew build' // 또는 'mvn package'
                 }
             }
