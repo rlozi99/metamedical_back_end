@@ -57,7 +57,3 @@ bootJar {
 wrapper {
 	gradleVersion = '8.5'
 }
-
-jar {
-    enabled = false
-}
