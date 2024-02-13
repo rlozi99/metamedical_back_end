@@ -6,8 +6,8 @@ pipeline {
         AZURE_TENANT_ID = 'bac4b78b-fcc2-4614-a32b-b69330b1af9f'
         CONTAINER_REGISTRY = 'goodacr.azurecr.io'
         RESOURCE_GROUP = 'AKS'
-        REPO = 'kwujio/myhttpd'
-        IMAGE_NAME = 'kwujio/myhttpd:latest'
+        REPO = 'kwujio/back'
+        IMAGE_NAME = 'kwujio/back:latest'
         TAG = 'latest'
     }
 
