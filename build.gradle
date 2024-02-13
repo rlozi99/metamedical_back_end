@@ -47,6 +47,13 @@ tasks.named('bootBuildImage') {
 tasks.named('test') {
 	useJUnitPlatform()
 }
+bootJar {
+	manifest {
+		attributes(
+				'Start-Class': 'com.example.demo.DemoApplication'
+		)
+	}
+}
 jar {
     enabled = false
 }
