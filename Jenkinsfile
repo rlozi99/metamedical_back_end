@@ -19,6 +19,12 @@ pipeline {
             }
         }
 
+        stage('Grant Execute Permission to Gradle Wrapper') {
+                    steps {
+                        sh 'chmod +x ./gradlew'
+                    }
+                }
+
  // JAR 파일 빌드 단계 추가
         stage('Build JAR') {
             steps {
