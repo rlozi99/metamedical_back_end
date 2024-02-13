@@ -52,6 +52,12 @@ bootJar {
 		)
 	}
 }
+
+// 사용할 Gradle 버전 명시
+wrapper {
+	gradleVersion = '8.5'
+}
+
 jar {
     enabled = false
 }
