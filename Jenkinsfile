@@ -24,7 +24,7 @@ pipeline {
             steps {
                 script {
                     // Gradle 또는 Maven을 사용하여 JAR 파일 빌드
-                    sh 'gradle build' // 또는 'mvn package'
+                    sh './gradlew build' // 또는 'mvn package'
                 }
             }
         }
