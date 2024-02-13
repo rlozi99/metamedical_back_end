@@ -9,6 +9,7 @@ pipeline {
         REPO = 'kwujio/back'
         IMAGE_NAME = 'kwujio/back:latest'
         TAG = 'latest'
+        JAR_FILE_PATH = 'build/libs/demo-0.0.1-SNAPSHOT.jar'
     }
 
     stages {
