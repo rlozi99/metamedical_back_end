@@ -42,7 +42,16 @@ pipeline {
                             // Log in to ACR
                             sh "az acr login --name $CONTAINER_REGISTRY --username $ACR_USERNAME --password $ACR_PASSWORD"
                             // Dockerfile에 있는 JAR 파일을 사용하여 Docker 이미지 빌드
-                            sh "docker build -t $REPO:$TAG ."
+
+                            // JAR 파일을 Docker 컨텍스트로 복사
+                            sh "cp $JAR_FILE_PATH build/libs/demo-0.0.1-SNAPSHOT.jar"
+
+                            // Dockerfile에 있는 JAR 파일을 사용하여 Docker 이미지 빌드
+                            sh "docker build -t $REPO:$TAG -f Dockerfile ."
+
+
+
+                            //sh "docker build -t $REPO:$TAG ."
                             // 이미지 태그 지정 및 ACR로 푸시
                             sh "docker tag $REPO:$TAG $CONTAINER_REGISTRY/$IMAGE_NAME"
                             sh "docker push $CONTAINER_REGISTRY/$IMAGE_NAME"
