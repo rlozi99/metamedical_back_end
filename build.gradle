@@ -58,10 +58,3 @@ bootJar {
 wrapper {
 	gradleVersion = '8.5'
 }
-
-// Gradle 버전과 Spring Boot 플러그인 버전을 무시하도록 설정
-configurations.all {
-	resolutionStrategy {
-		failOnVersionConflict() // 버전 충돌 시 실패하지 않도록 설정
-	}
-}
