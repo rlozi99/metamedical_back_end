@@ -20,7 +20,7 @@ public class registercontroller {
     public ResponseEntity<String> vaccineRegister(@RequestBody Vaccine vaccine) {
         Vaccine registeredVaccine = registerService.vaccineRegister(vaccine);
         if (registeredVaccine != null) {
-            return ResponseEntity.ok("신청이 완료되었습니다.");
+            return ResponseEntity.ok("신청이 완료되었습니다!");
         } else {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("신청이 실패하였습니다.");
         }
