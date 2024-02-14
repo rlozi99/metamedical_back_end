@@ -89,7 +89,7 @@ pipeline {
                         sh "git pull --rebase origin main"
                         def remote = "https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/JoEunSae/back-end.git"
                         // 원격 저장소에 푸시
-                        sh "git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/rlozi99/back_gitops.git main"
+                        sh "git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/rlozi99/back-gitops.git main"
                     }
                 }
             }
