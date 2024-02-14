@@ -32,7 +32,7 @@ pipeline {
                     withEnv(['JAVA_HOME=/usr/lib/jvm/java-21-openjdk-amd64']) {
                         // Gradle을 사용하여 JAR 파일 빌드
                         sh './gradlew --version'
-                        sh './gradlew build'
+                        sh './gradlew build --warning-mode=none'
                     }
                 }
             }
