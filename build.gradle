@@ -69,3 +69,8 @@ java {
 		languageVersion.set(JavaLanguageVersion.of(21))
 	}
 }
+
+jar {
+	archiveFileName = 'demo-0.0.1-SNAPSHOT.jar'
+	destinationDir = file('build/libs')
+}
