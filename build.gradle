@@ -8,7 +8,8 @@ group = 'com.example'
 version = '0.0.1-SNAPSHOT'
 
 java {
-	sourceCompatibility = '21'
+	sourceCompatibility = JavaVersion.VERSION_21
+	targetCompatibility = JavaVersion.VERSION_21
 }
 
 repositories {
@@ -34,7 +35,9 @@ dependencies {
 //	}
 //}
 
-
+jar {
+	enabled = false
+}
 
 tasks.named('bootBuildImage') {
 	builder = 'paketobuildpacks/builder-jammy-base:latest'
@@ -43,6 +46,15 @@ tasks.named('bootBuildImage') {
 tasks.named('test') {
 	useJUnitPlatform()
 }
-jar {
-    enabled = false
+bootJar {
+	manifest {
+		attributes(
+				'Start-Class': 'com.example.demo.DemoApplication'
+		)
+	}
+}
+
+// 사용할 Gradle 버전 명시
+wrapper {
+	gradleVersion = '8.5'
 }

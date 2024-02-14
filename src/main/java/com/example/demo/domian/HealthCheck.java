@@ -13,6 +13,8 @@ public class HealthCheck {
     )
     private int user_no;
 
+
+
     @Column(
             name = "name",
             nullable = false,
