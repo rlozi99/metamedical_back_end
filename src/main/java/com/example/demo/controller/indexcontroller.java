@@ -13,10 +13,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 
+
 @RestController
 @RequestMapping("/login")
 @CrossOrigin(origins = "www.metahospital.shop:80")
 public class indexcontroller {
+
 
     @Autowired
     private LoginService loginService;
