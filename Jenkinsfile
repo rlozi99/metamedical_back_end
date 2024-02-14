@@ -79,7 +79,7 @@ pipeline {
         stage('Push Changes to GitOps Repository') {
             steps {
                 script {
-                    withCredentials([usernamePassword(credentialsId: GIT_CREDENTIALS_ID, passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
+                    withCredentials([usernamePassword(credentialsId: "jenkins-git-access", passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
                         // 현재 브랜치 확인 및 main으로 체크아웃
                         def currentBranch = sh(script: "git rev-parse --abbrev-ref HEAD", returnStdout: true).trim()
                         if (currentBranch != "main") {
