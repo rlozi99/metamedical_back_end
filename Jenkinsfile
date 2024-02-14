@@ -13,7 +13,7 @@ pipeline {
         TAG = "${TAG_VERSION}${env.BUILD_ID}"
         NAMESPACE = 'back'
 
-
+        GIT_CREDENTIALS_ID = 'jenkins-git-access'
         JAR_FILE_PATH = 'build/libs/demo-0.0.1-SNAPSHOT.jar'
     }
 
@@ -51,7 +51,7 @@ pipeline {
                         // Dockerfile에 있는 JAR 파일을 사용하여 Docker 이미지 빌드
                         sh "docker build -t $REPO:$TAG ."
                         // 이미지 태그 지정 및 ACR로 푸시
-                        sh "docker tag $REPO:$TAG $CONTAINER_REGISTRY/$REPO:$TAG"
+                         sh "docker tag $REPO:$TAG $CONTAINER_REGISTRY/$REPO:$TAG"
                         sh "docker push $CONTAINER_REGISTRY/$REPO:$TAG"
                     }
                 }
@@ -79,7 +79,7 @@ pipeline {
         stage('Push Changes to GitOps Repository') {
             steps {
                 script {
-                    withCredentials([usernamePassword(credentialsId: 'jenkins-git-access', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
+                    withCredentials([usernamePassword(credentialsId: GIT_CREDENTIALS_ID, passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
                         // 현재 브랜치 확인 및 main으로 체크아웃
                         def currentBranch = sh(script: "git rev-parse --abbrev-ref HEAD", returnStdout: true).trim()
                         if (currentBranch != "main") {
@@ -94,16 +94,5 @@ pipeline {
                 }
             }
         }
-
-
-
-
-
-
-
-
-
-
-
     }
 }
