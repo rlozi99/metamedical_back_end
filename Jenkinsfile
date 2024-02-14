@@ -29,7 +29,7 @@ pipeline {
         stage('Build JAR') {
             steps {
                 script {
-                    withEnv(['JAVA_HOME=/usr/lib/jvm/java-21-0.2']) {
+                    withEnv(['JAVA_HOME=/usr/lib/jvm/jdk-21.0.2']) {
                         // Gradle을 사용하여 JAR 파일 빌드
                         sh './gradlew --version'
                         sh './gradlew clean build --warning-mode=none -x test --info'
