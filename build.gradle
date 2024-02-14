@@ -64,6 +64,7 @@ tasks.withType(JavaCompile) {
 	options.compilerArgs << '--release' << '21'
 }
 
+/*
 java {
 	toolchain {
 		languageVersion.set(JavaLanguageVersion.of(21))
@@ -73,3 +74,4 @@ java {
 jar {
 	archiveFileName = 'demo-0.0.1-SNAPSHOT.jar'
 }
+*/
