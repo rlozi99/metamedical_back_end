@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin(origins = "www.metahospital.shop:80")
 public class registercontroller {
 
-
     @Autowired
     private RegisterService registerService;
 
