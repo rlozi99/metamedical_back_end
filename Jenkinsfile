@@ -19,7 +19,7 @@ pipeline {
             }
         }
 
-        stage('Grant Execute Permission to Gradle Wrapper') {
+        stage('Grant Execute Permission to Gradle Wrapper..') {
                     steps {
                         sh 'chmod +x ./gradlew'
                     }
