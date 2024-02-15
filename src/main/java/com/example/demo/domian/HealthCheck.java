@@ -2,6 +2,7 @@ package com.example.demo.domian;
 
 import jakarta.persistence.*;
 
+
 @Entity
 @Table(
         name = "healthcheck"
