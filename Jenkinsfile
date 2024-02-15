@@ -46,7 +46,7 @@ pipeline {
                         withSonarQubeEnv('SonarQubeServer') {
                             script {
                                 // SonarQube 스캔 명령어 실행
-                                sh "./gradlew sonar"
+                                sh "./gradlew sonar --warning-mode=none"
                             }
                         }
                     }
