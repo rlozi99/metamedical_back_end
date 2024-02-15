@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/login")
-@CrossOrigin(origins = "http://www.metahospital.shop:80/join")
+@CrossOrigin(origins = "*")
 public class indexcontroller {
 
     @Autowired
