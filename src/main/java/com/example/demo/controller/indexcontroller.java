@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin(origins = "https://www.metahospital.shop")
 public class indexcontroller {
 
-
     @Autowired
     private LoginService loginService;
 
