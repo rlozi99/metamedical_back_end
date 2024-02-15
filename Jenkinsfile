@@ -46,7 +46,7 @@ pipeline {
                         withSonarQubeEnv('SonarQubeServer') {
                             script {
                                 // SonarQube 스캔 명령어 실행
-                                sh "./gradlew sonar --warning-mode=none --info"
+                                sh "./gradlew sonar clean build --warning-mode=none -x test --info"
                             }
                         }
                     }
