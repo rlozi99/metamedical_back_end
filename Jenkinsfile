@@ -23,6 +23,12 @@ pipeline {
                 checkout scm
             }
         }
+        
+        stage('SonarQube Analysis') {
+            withSonarQubeEnv() {
+            sh "./gradlew sonar"
+            }
+        }
 
         stage('Grant Execute Permission to Gradle Wrapper') {
                     steps {
