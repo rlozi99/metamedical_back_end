@@ -23,10 +23,14 @@ pipeline {
                 checkout scm
             }
         }
-        
         stage('SonarQube Analysis') {
-            withSonarQubeEnv() {
-            sh "./gradlew sonar"
+            steps {
+                withSonarQubeEnv('SonarQubeServer') {
+                    script {
+                        // SonarQube 스캔 명령어 실행
+                        sh "./gradlew sonar"
+                    }
+                }
             }
         }
 
