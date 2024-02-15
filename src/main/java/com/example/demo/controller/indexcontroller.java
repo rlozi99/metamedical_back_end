@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/login")
-@CrossOrigin(origins = "http://front-end-service.front.svc.cluster.local:80")
+@CrossOrigin(origins = "http://localhost:31563")
 public class indexcontroller {
 
 
