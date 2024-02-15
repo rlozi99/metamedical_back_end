@@ -23,17 +23,6 @@ pipeline {
                 checkout scm
             }
         }
-        stage('SonarQube Analysis') {
-            steps {
-                withSonarQubeEnv('SonarQubeServer') {
-                    script {
-                        // SonarQube 스캔 명령어 실행
-                        sh "./gradlew sonar"
-                    }
-                }
-            }
-        }
-
         stage('Grant Execute Permission to Gradle Wrapper') {
                     steps {
                         sh 'chmod +x ./gradlew'
@@ -52,6 +41,17 @@ pipeline {
                 }
             }
         }
+        stage('SonarQube Analysis') {
+                    steps {
+                        withSonarQubeEnv('SonarQubeServer') {
+                            script {
+                                // SonarQube 스캔 명령어 실행
+                                sh "./gradlew sonar"
+                            }
+                        }
+                    }
+                }
+
         stage('Build and Push Docker Image to ACR') {
             steps {
                 script {
