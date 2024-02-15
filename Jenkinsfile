@@ -23,6 +23,18 @@ pipeline {
                 checkout scm
             }
         }
+
+        stage('SonarQube Analysis') {
+            steps {
+                script {
+                    def scannerHome = tool 'sonarqube_scanner'
+                    withSonarQubeEnv('SonarQubeServer') {
+                        // SonarScanner 실행 명령에 -X 옵션 추가
+                        sh "${scannerHome}/bin/sonar-scanner -X"
+                    }
+                }
+            }
+        }
         stage('Grant Execute Permission to Gradle Wrapper') {
                     steps {
                         sh 'chmod +x ./gradlew'
@@ -41,16 +53,16 @@ pipeline {
                 }
             }
         }
-        stage('SonarQube Analysis') {
-                    steps {
-                        withSonarQubeEnv('SonarQubeServer') {
-                            script {
-                                // SonarQube 스캔 명령어 실행
-                                sh "./gradlew sonar clean build --warning-mode=none -x test --info"
-                            }
-                        }
-                    }
-                }
+        // stage('SonarQube Analysis') {
+        //             steps {
+        //                 withSonarQubeEnv('SonarQubeServer') {
+        //                     script {
+        //                         // SonarQube 스캔 명령어 실행
+        //                         sh "./gradlew sonar clean build --warning-mode=none -x test --info"
+        //                     }
+        //                 }
+        //             }
+        //         }
 
         stage('Build and Push Docker Image to ACR') {
             steps {
