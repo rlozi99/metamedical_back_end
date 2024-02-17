@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/")
+@CrossOrigin("www.metahospital.shop")
 public class registercontroller {
 
     @Autowired
