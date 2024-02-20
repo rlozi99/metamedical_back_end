@@ -29,7 +29,7 @@ pipeline {
                 }
             }
         }
-        stage('Initialize..') {
+        stage('Initialize') {
             steps {
                 script {
                     def branch = env.BRANCH_NAME
