@@ -9,11 +9,11 @@ pipeline {
 
 
         CONTAINER_REGISTRY = 'goodbirdacr.azurecr.io'
-        REPO = 'medical/front'
-        IMAGE_NAME = 'medical/front:latest'
+        REPO = 'medical/back'
+        IMAGE_NAME = 'medical/back:latest'
 
         GIT_CREDENTIALS_ID = 'jenkins-git-access'
-        GIT_REPOSITORY = "rlozi99/metamedical_front_ops" 
+        GIT_REPOSITORY = "rlozi99/metamedical_back_ops" 
 
         NEW_IMAGE_TAG = "${env.BRANCH_NAME}-${env.BUILD_ID}"
 
@@ -114,7 +114,6 @@ pipeline {
         }
         stage('Checkout GitOps') {
                     steps {
-                        // 'front_gitops' 저장소에서 파일들을 체크아웃합니다.
                         git branch: BRANCH_NAME,
                             credentialsId: 'jenkins-git-access',
                             url: "https://github.com/${GIT_REPOSITORY}"
