@@ -21,7 +21,6 @@ pipeline {
 
         JAR_FILE_PATH = 'build/libs/demo-0.0.1-SNAPSHOT.jar'
     }
-
     stages{
         stage('Check BRANCH_NAME') {
             steps {
